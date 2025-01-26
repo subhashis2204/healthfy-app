@@ -16,7 +16,7 @@ function ProfilePage() {
   const [editing, setEditing] = useState(false)
   const [weight, setWeight] = useState(58)
   const [height, setHeight] = useState("5' 8\"")
-  const [allergic, setAllergic] = useState(["hello", "world"])
+  const [allergic, setAllergic] = useState([])
 
   const gendermap = [
     { id: 1, value: "male", label: "male" },
@@ -57,29 +57,31 @@ function ProfilePage() {
         <section className="grid grid-cols-2 w-full gap-4">
           <section className="w-full bg-blue-200 rounded-md p-5 flex flex-col gap-6 col-start-1 col-span-1">
             <Header title="Personal Information" />
-            <section className="w-full flex justify-between gap-6">
+            <section className="w-full  flex flex-col gap-8">
+              <section className="flex justify-between gap-4">
+                <InputElement
+                  label="Firstname"
+                  value={username}
+                  handleValueChange={setUsername}
+                  capitalize
+                  editing={editing}
+                />
+                <InputElement
+                  label="Lastname"
+                  value={username}
+                  handleValueChange={setUsername}
+                  capitalize
+                  editing={editing}
+                />
+              </section>
               <InputElement
-                label="Firstname"
-                value={username}
-                handleValueChange={setUsername}
-                capitalize
-                editing={editing}
-              />
-              <InputElement
-                label="Lastname"
-                value={username}
-                handleValueChange={setUsername}
-                capitalize
+                label="email address"
+                value={email}
+                handleValueChange={setEmail}
+                customStyle="w-full"
                 editing={editing}
               />
             </section>
-            <InputElement
-              label="email address"
-              value={email}
-              handleValueChange={setEmail}
-              customStyle="w-full"
-              editing={editing}
-            />
             <section className="flex justify-between flex-wrap">
               <SelectElement
                 label="gender"
