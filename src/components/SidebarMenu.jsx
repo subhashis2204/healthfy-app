@@ -32,7 +32,7 @@ function textTruncate(sentence) {
 function SidebarMenu() {
   return (
     <>
-      <section className="w-[20rem] bg-black h-[100%]">
+      <section className="w-[20rem] bg-black min-h-[100vh]">
         <section className="flex flex-col px-2 py-3 gap-3">
           <SidebarItem
             title="My Profile"

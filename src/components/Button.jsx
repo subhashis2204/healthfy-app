@@ -1,6 +1,6 @@
-import { ToastContainer, toast, Bounce } from "react-toastify"
+import { ToastContainer, Bounce } from "react-toastify"
 
-function CustomButton({ editing, setEditing, text, customStyle }) {
+function CustomButton({ editing, handleClick, text, customStyle }) {
   const toastParams = {
     position: "bottom-right",
     autoClose: 2000,
@@ -14,22 +14,11 @@ function CustomButton({ editing, setEditing, text, customStyle }) {
     theme: "light",
     transition: Bounce,
   }
-
-  const notify = () => toast.success("Data Saved Successfully!")
-
-  const handleClick = () => {
-    if (text === "Edit") {
-      setEditing(true)
-    } else if (text === "Save") {
-      setEditing(false)
-      notify()
-    }
-  }
   const styles = `bg-blue-500 text-white px-6 py-2 rounded-md ${customStyle}`
-
+  console.log(handleClick)
   return (
     <>
-      <button className={styles} onClick={handleClick}>
+      <button className={styles} onClick={() => handleClick(text)}>
         {text}
       </button>
       {text === "Save" && <ToastContainer {...toastParams} />}

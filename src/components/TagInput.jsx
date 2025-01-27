@@ -2,10 +2,11 @@ import TagsInput from "react-tagsinput"
 
 function TagsInputElement({ type = "text", label, value, onChange, customStyle, capitalize, editing }) {
   const bgColor = editing ? "bg-white" : "bg-blue-50" // match the bg color based on editing or not editing
-  const paddingBottom = editing || value.length === 0 ? "pb-2" : "" // Add padding bottom if editing or no tags are there to make it uniform
-  const mainStyle = `px-2 pt-2 rounded-lg border-[3px] border-blue-200 focus:border-blue-400 focus:outline-none disabled:bg-sky-50 disabled:text-gray-700 placeholder-gray-400 ${bgColor} ${customStyle}`
+  const paddingBottom = editing || value.length === 0 ? "pb-1.5" : "" // Add padding bottom if editing or no tags are there to make it uniform
+  const mainStyle = `px-1.5 pt-1.5 rounded-lg border-[3px] border-blue-200 focus:border-blue-400 focus:outline-none disabled:bg-sky-50 disabled:text-gray-700 placeholder-gray-400 ${bgColor} ${customStyle}`
   const inputStyles = `flex-grow border-none outline-none focus:ring-0 placeholder-gray-400 ${paddingBottom} ${bgColor}`
-  const tagStyles = "bg-rose-400 hover:bg-rose-700 text-white inline-flex items-center px-2 py-1 rounded-md mb-2 mr-2"
+  const tagStyles =
+    "text-sm bg-rose-400 hover:bg-rose-500 text-white inline-flex items-center px-3 py-2 rounded-md mb-1.5 mr-1.5 capitalize"
   const removeButtonStyles = "ml-2 text-white focus:outline-none"
   const inputPlaceholder = editing || value.size === 0 ? "Add an Item . . ." : ""
   const handleKeyDown = (e) => {
