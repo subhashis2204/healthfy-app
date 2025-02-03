@@ -8,6 +8,7 @@ import TagsInputElement from "../components/TagInput"
 import SelectGroup from "../components/SelectGroup"
 import Cookies from "universal-cookie"
 import { toast } from "react-toastify"
+import Canvas from "../components/Canvas"
 
 function ProfilePage() {
   const cookies = new Cookies()
@@ -113,16 +114,16 @@ function ProfilePage() {
   ]
 
   return (
-    <section className="w-full h-full rounded-lg bg-blue-100 flex flex-col gap-8 p-5">
-      <section className="flex flex-col items-center">
+    <Canvas bgColor="bg-blue-100">
+      <section className="relative flex flex-col items-center">
         <MdAccountCircle className="text-8xl text-blue-800" />
         <p className="capitalize text-xl font-bold">Subhashis Paul</p>
-        <section className="flex gap-2 absolute right-0 mr-5 top-0 mt-5">
+        <section className="flex gap-2 absolute right-0 top-0 mt-5">
           <CustomButton
             editing={editing}
             handleClick={handleClick}
             text="Edit"
-            customStyle="bg-red-300 text-black border-2 border-red-500"
+            customStyle="bg-red-500 text-black border-2 border-red-500"
           />
           <CustomButton
             editing={editing}
@@ -211,7 +212,7 @@ function ProfilePage() {
           </section>
         </section>
       </section>
-    </section>
+    </Canvas>
   )
 }
 

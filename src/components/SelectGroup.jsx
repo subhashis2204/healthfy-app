@@ -16,7 +16,7 @@ function SelectGroup({ label, capitalize, customStyle, conditions, editing }) {
           {conditions.map(({ key, condition, state, setState }) => (
             <button
               id={key}
-              className={`${tagStyles} ${state ? "bg-red-400 text-white" : "text-red-600"}`}
+              className={`${tagStyles} ${state ? "bg-red-400 text-white" : "text-gray-600"}`}
               onClick={(e) => editing && setState(!state)}
             >
               {condition}

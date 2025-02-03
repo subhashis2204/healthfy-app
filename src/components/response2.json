@@ -1,0 +1,98 @@
+{
+  "productInfo": {
+    "name": "Corn Snacks",
+    "brand": "XYZ Foods",
+    "servingSize": "28g"
+  },
+  "userContext": {
+    "dietaryPreferences": ["keto"],
+    "allergies": ["onion", "apple", "grapes"],
+    "avoidances": ["artificial_flavoring", "high_carbs"]
+  },
+  "productAnalysis": {
+    "suitability": "not suitable",
+    "reasons": [
+      "High carbohydrate content (18g) is not keto-friendly.",
+      "Contains added sugar (0.85g), which may impact blood sugar levels.",
+      "Artificial flavoring detected (INS 627, INS 631)."
+    ],
+    "observations": [
+      {
+        "type": "additive",
+        "message": "Artificial flavoring (INS 627, INS 631) detected.",
+        "severity": "high"
+      },
+      {
+        "type": "sodium",
+        "message": "161mg per serving (7% daily value).",
+        "severity": "medium"
+      },
+      {
+        "type": "carbohydrates",
+        "message": "18g per serving, which is high for a keto diet.",
+        "severity": "high"
+      },
+      {
+        "type": "sugar",
+        "message": "Added sugar (0.85g) detected.",
+        "severity": "medium"
+      }
+    ]
+  },
+  "nutritionalBreakdown": {
+    "carbohydrates": { "value": "18g", "dailyPercent": "6%" },
+    "dietaryFiber": { "value": "2g", "dailyPercent": "8%" },
+    "addedSugars": { "value": "0.85g", "dailyPercent": "1.7%" },
+    "totalFat": { "value": "7g", "dailyPercent": "10%" },
+    "protein": { "value": "2g", "dailyPercent": "4%" },
+    "sodium": { "value": "161mg", "dailyPercent": "7%" }
+  },
+  "additivesSummary": [
+    {
+      "name": "INS 270",
+      "commonName": "Lactic Acid",
+      "purpose": "Acidity Regulator",
+      "safety": "Generally Recognized as Safe"
+    },
+    {
+      "name": "INS 551",
+      "commonName": "Silicon Dioxide",
+      "purpose": "Anti-caking Agent",
+      "safety": "Safe"
+    },
+    {
+      "name": "INS 627",
+      "commonName": "Disodium Guanylate",
+      "purpose": "Flavor Enhancer",
+      "safety": "Moderate Risk (Not Recommended for Infants, Pregnant Women, or Gout Patients)"
+    },
+    {
+      "name": "INS 631",
+      "commonName": "Disodium Inosinate",
+      "purpose": "Flavor Enhancer",
+      "safety": "Moderate Risk (Not Recommended for Individuals with Kidney Issues)"
+    }
+  ],
+  "recommendations": {
+    "healthierAlternatives": [
+      {
+        "type": "snack",
+        "name": "Roasted Almonds",
+        "suitability": ["keto", "diabetic"],
+        "nutritionalBenefits": ["High in healthy fats", "No additives"]
+      },
+      {
+        "type": "snack",
+        "name": "Cheese Sticks",
+        "suitability": ["keto", "diabetic"],
+        "nutritionalBenefits": ["Good fat-to-protein ratio", "Low in carbohydrates"]
+      },
+      {
+        "type": "snack",
+        "name": "Unsweetened Yogurt with Chia Seeds",
+        "suitability": ["diabetic", "low-sodium"],
+        "nutritionalBenefits": ["Rich in probiotics", "Good source of protein"]
+      }
+    ]
+  }
+}

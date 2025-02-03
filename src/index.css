@@ -5,3 +5,7 @@
 body {
   font-family: "Poppins";
 }
+
+body::-webkit-scrollbar {
+  display: none;
+}

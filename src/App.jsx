@@ -7,22 +7,22 @@ import { BrowserRouter, Routes, Route } from "react-router-dom"
 import ProfilePage from "./Pages/ProfilePage"
 import ImageUpload from "./Pages/ImageUpload"
 import Information from "./Pages/Info"
+import Navbar from "./components/Navbar"
 
 function App() {
   return (
     <>
       <BrowserRouter>
-        <section className="flex">
-          <section className="w-[20rem]">
+        {/* <section className="w-[20rem]">
             <SidebarMenu />
-          </section>
-          <section className="w-full p-3">
-            <Routes>
-              <Route path="/" element={<ProfilePage />} />
-              <Route path="/image-upload" element={<ImageUpload />} />
-              <Route path="/info/:id" element={<Information />} />
-            </Routes>
-          </section>
+          </section> */}
+        <section className="w-full p-3">
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<ProfilePage />} />
+            <Route path="/image-upload" element={<ImageUpload />} />
+            <Route path="/info" element={<Information />} />
+          </Routes>
         </section>
       </BrowserRouter>
     </>
