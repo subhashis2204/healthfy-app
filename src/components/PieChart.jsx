@@ -1,24 +1,20 @@
 import * as React from "react"
 import { PieChart, pieArcLabelClasses } from "@mui/x-charts/PieChart"
-import { Box, Typography } from "@mui/material"
 
-const data = {
-  data: [
-    { id: 0, value: 7, label: "Fats (g)" },
-    { id: 1, value: 2, label: "Protein (g)" },
-    { id: 2, value: 18, label: "Carbohydrates (g)" },
-    { id: 3, value: 3.08, label: "Fiber & Sugars (g)" },
-    { id: 4, value: 0.161, label: "Sodium (g)" },
-  ],
-  valueFormatter: (value) => {
-    console.log(value)
-    return `${value.data}g`
-  }, // Ensure value is a number
-}
+export default function PieArcLabel({ information, perserving }) {
+  const data = {
+    data: information?.map((item, index) => ({
+      id: index,
+      label: item.label,
+      value: item.value,
+    })),
+    valueFormatter: (value) => {
+      console.log(value)
+      return `${value.data}g`
+    },
+  }
+  const total = data.data.reduce((acc, item) => acc + item.value, 0)
 
-const total = data.data.reduce((acc, item) => acc + item.value, 0)
-
-export default function PieArcLabel() {
   const colors = [
     "#FAD02E", // Soft Yellow
     "#F28D35", // Soft Orange
@@ -36,7 +32,9 @@ export default function PieArcLabel() {
       {/* <section className="flex justify-between items-center">
         <h1 className="text-xl font-bold bg-white px-3 py-2 rounded-md">Nutritional Information</h1>
       </section> */}
-      <span className="ml-auto text-sm font-bold mr-6 bg-orange-200 px-3 py-2 rounded-md">Per Serving : 28 gms</span>
+      <span className="ml-auto text-sm font-bold mr-6 bg-orange-200 px-3 py-2 rounded-md">
+        Per Serving : {perserving} gms
+      </span>
       <PieChart
         colors={colors}
         series={[

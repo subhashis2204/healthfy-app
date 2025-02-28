@@ -9,16 +9,17 @@ import SelectGroup from "../components/SelectGroup"
 import Cookies from "universal-cookie"
 import { toast } from "react-toastify"
 import Canvas from "../components/Canvas"
+import GridSetter from "../components/GridSetter"
 
 function ProfilePage() {
   const cookies = new Cookies()
 
   const [username, setUsername] = useState("subhashis paul")
-  const [email, setEmail] = useState("subhashispaul2204@gmail.com")
+  const [email, setEmail] = useState("subhashispaul@gmail.com")
   const [age, setAge] = useState(23)
-  const [gender, setGender] = useState("")
-  const [diet, setDiet] = useState("")
-  const [specialDiet, setSpecialDiet] = useState("")
+  const [gender, setGender] = useState("male")
+  const [diet, setDiet] = useState("veg")
+  const [specialDiet, setSpecialDiet] = useState("na")
   const [editing, setEditing] = useState(false)
   const [weight, setWeight] = useState(58)
   const [height, setHeight] = useState("5' 8\"")
@@ -133,25 +134,29 @@ function ProfilePage() {
           />
         </section>
       </section>
-      <section className="flex flex-col gap-4">
+      <section className="flex flex-col gap-8 px-4 pb-4">
         <section className="grid grid-cols-2 w-full gap-4">
           <section className="w-full bg-blue-200 rounded-md p-5 flex flex-col gap-6 col-start-1 col-span-1">
             <Header title="Personal Information" />
-            <section className="w-full flex justify-between gap-6">
-              <InputElement
-                label="Firstname"
-                value={username}
-                handleValueChange={setUsername}
-                capitalize
-                editing={editing}
-              />
-              <InputElement
-                label="Lastname"
-                value={username}
-                handleValueChange={setUsername}
-                capitalize
-                editing={editing}
-              />
+            <section className="w-full grid grid-cols-8 gap-[10%]">
+              <GridSetter customStyle="col-start-1 col-span-4">
+                <InputElement
+                  label="Firstname"
+                  value="Subhashis"
+                  handleValueChange={setUsername}
+                  capitalize
+                  editing={editing}
+                />
+              </GridSetter>
+              <GridSetter customStyle="col-start-5 col-span-4">
+                <InputElement
+                  label="Lastname"
+                  value="Paul"
+                  handleValueChange={setUsername}
+                  capitalize
+                  editing={editing}
+                />
+              </GridSetter>
             </section>
             <InputElement
               label="email address"

@@ -9,7 +9,9 @@
 import React from "react"
 import IngredientRow from "./TableRow" // Adjust the path if necessary
 
-const IngredientTable = ({ ingredients = [] }) => {
+function IngredientTable({ ingredients }) {
+  console.log(ingredients)
+  console.log("hello")
   return (
     <div className="relative overflow-x-auto text-[1rem] sm:rounded-md">
       <table className="w-full text-md text-left rtl:text-right text-gray-500 dark:text-gray-400">

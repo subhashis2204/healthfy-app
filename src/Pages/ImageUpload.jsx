@@ -1,27 +1,39 @@
 import axios from "axios"
 import upload from "../assets/upload.svg"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Canvas from "../components/Canvas"
 import FileNameContainer from "../components/FileNameContainer"
+import Cookies from "universal-cookie"
+import { useNavigate, redirect } from "react-router-dom"
 
-function UploadPage({ setAllDocuments }) {
+function UploadPage({ response, setResponse }) {
   const [files, setFiles] = useState([])
-  const [title, setTitle] = useState("")
   const [progress, setProgress] = useState({ started: false, pc: 0 })
   const [msg, setMsg] = useState("")
+  const navigate = useNavigate()
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
+    console.log(files)
     event.preventDefault()
+    const cookies = new Cookies()
+    const user = cookies.get("user")
+    const result = cookies.set("response", {})
 
     if (!files || files.length === 0) return
 
     const fd = new FormData()
+    fd.append("gender", user?.gender)
+    fd.append("age", user?.age)
+    fd.append("allergic", user?.allergic)
+    fd.append("diabetic", user?.diabetic)
+    fd.append("hypertension", user?.hypertension)
+    fd.append("cholesterol", user?.cholesterol)
+    fd.append("diet", user?.diet)
+    fd.append("specialdiet", user?.specialDiet)
+    fd.append("specialDiet", user?.specialDiet)
 
-    fd.append("title", title)
-
-    for (let i = 0; i < files.length; i++) {
-      fd.append("files", files[i])
-    }
+    console.log(user)
+    fd.append("image", files[0])
 
     setProgress((prevstate) => {
       return { ...prevstate, started: true }
@@ -29,32 +41,23 @@ function UploadPage({ setAllDocuments }) {
     setMsg("Uploading...")
 
     setFiles([])
-    setTitle("")
+    console.log(user.diet)
 
-    axios
-      .post("http://localhost:8000/uploads", fd, {
-        onUploadProgress: (progressEvent) => {
-          setProgress((prevstate) => {
-            return { ...prevstate, pc: progressEvent.progress * 100 }
-          })
-          if (progressEvent.progress === 1) setMsg("Uploaded .. Processing")
-        },
-      })
-      .then((response) => {
-        console.log(response.data)
-
-        if (response.data.message === "success") {
-          setMsg("Done")
-        } else setMsg("Error")
-
-        axios
-          .get("http://localhost:8000/")
-          .then((response) => {
-            setAllDocuments(response.data.message)
-          })
-          .catch((e) => console.log(e))
-      })
-      .catch((e) => console.log(e))
+    const response = await axios.post("http://localhost:8000/upload", fd, {
+      onUploadProgress: (progressEvent) => {
+        setProgress((prevstate) => {
+          return { ...prevstate, pc: progressEvent.progress * 100 }
+        })
+        if (progressEvent.progress === 1) setMsg("Uploaded .. Processing")
+      },
+    })
+    console.log(response.data)
+    setResponse(response.data)
+    if (response.data) {
+      setMsg("Done")
+    } else {
+      setMsg("Error")
+    }
   }
 
   const filesArray = Array.from(files)
@@ -67,7 +70,7 @@ function UploadPage({ setAllDocuments }) {
 
     return <FileNameContainer key={key} filename={name} extension={extension} />
   })
-
+  console.log(files)
   return (
     <>
       <Canvas>
